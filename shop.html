@@ -49,6 +49,7 @@
       padding: 20px;
       width: 280px;
       text-align: center;
+      position: relative;
     }
     .product img {
       width: 100%;
@@ -62,6 +63,43 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #ff6b6b;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+    .policy-links {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .policy-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2d5330;
+      font-size: 0.9rem;
+    }
+    .policy-section {
+      background-color: #fff;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .policy-section h3 {
+      color: #2d5330;
+      margin-top: 0;
+    }
+    .policy-section p {
+      text-align: left;
+      line-height: 1.6;
+      color: #333;
     }
     footer {
       text-align: center;
@@ -86,8 +124,8 @@
   <main>
     <h2 style="text-align:center; color:#2d5330;">Shop Our Collection</h2>
     <div class="product-grid">
-
       <div class="product">
+        <div class="badge">Hot</div>
         <img src="https://images.unsplash.com/photo-1595433562696-eede0691a368" alt="Calligraphy Frame">
         <h3>Calligraphy Wall Frame</h3>
         <p>$29.99</p>
@@ -104,7 +142,7 @@
       <div class="product">
         <img src="https://images.unsplash.com/photo-1616627988691-a3d4aa9d23ff" alt="Artificial Plant">
         <h3>Mini Indoor Plant</h3>
-        <p>$15.99</p>
+        <p><del style="color: gray;">$18.99</del> $15.99</p>
         <button class="snipcart-add-item"
           data-item-id="plant-002"
           data-item-name="Mini Indoor Plant"
@@ -116,20 +154,74 @@
       </div>
 
       <div class="product">
+        <div class="badge">Coming Soon</div>
         <img src="https://images.unsplash.com/photo-1578894380176-d9a27fcf686d" alt="Decor Candle">
         <h3>Decorative Scented Candle</h3>
         <p>$12.50</p>
+        <button disabled style="background: gray; cursor: not-allowed;">
+          Out of Stock
+        </button>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1602848593672-6d45ec5df9c2" alt="Boho Table Lamp">
+        <h3>Boho Table Lamp</h3>
+        <p>$45.00</p>
         <button class="snipcart-add-item"
-          data-item-id="decor-003"
-          data-item-name="Decorative Scented Candle"
-          data-item-price="12.50"
+          data-item-id="lamp-004"
+          data-item-name="Boho Table Lamp"
+          data-item-price="45.00"
           data-item-url="/shop.html"
-          data-item-description="Hand-poured candle with calming scent and decor flair.">
+          data-item-description="Soft-lit rattan-style lamp for cozy corners.">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1602524209948-fab3ddf5bb34" alt="Gold Mirror Tray">
+        <h3>Gold Mirror Tray</h3>
+        <p>$24.99</p>
+        <button class="snipcart-add-item"
+          data-item-id="tray-005"
+          data-item-name="Gold Mirror Tray"
+          data-item-price="24.99"
+          data-item-url="/shop.html"
+          data-item-description="Elegant decorative tray perfect for perfumes, candles or jewelry.">
           Add to Cart
         </button>
       </div>
 
     </div>
+
+    <div class="policy-links">
+      <a href="#shipping">Shipping Policy</a>
+      <a href="#returns">Return Policy</a>
+      <a href="#terms">Terms & Conditions</a>
+      <a href="#faqs">FAQs</a>
+    </div>
+
+    <div class="policy-section" id="shipping">
+      <h3>Shipping Policy</h3>
+      <p>We offer standard shipping across the USA. Orders are processed within 1-3 business days. Delivery typically takes 7-15 days depending on location. You will receive a tracking link once your order is dispatched.</p>
+    </div>
+
+    <div class="policy-section" id="returns">
+      <h3>Return Policy</h3>
+      <p>If you are not satisfied with your purchase, you may return the item within 14 days of delivery. Items must be unused and in original packaging. Please contact support@inhomease.com to initiate a return.</p>
+    </div>
+
+    <div class="policy-section" id="terms">
+      <h3>Terms & Conditions</h3>
+      <p>By placing an order, you agree to our policies, including shipping timelines and return conditions. All products are for decorative use only. We reserve the right to update our policies at any time without prior notice.</p>
+    </div>
+
+    <div class="policy-section" id="faqs">
+      <h3>Frequently Asked Questions</h3>
+      <p><strong>Q: Where do you ship?</strong><br />A: Currently, we ship across the United States only.</p>
+      <p><strong>Q: Do you offer express shipping?</strong><br />A: Not yet, but we’re working on it!</p>
+      <p><strong>Q: Can I cancel or change my order?</strong><br />A: Please email us within 12 hours of placing your order to request any changes.</p>
+    </div>
+
   </main>
 
   <footer>
