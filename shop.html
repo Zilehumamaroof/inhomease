@@ -6,6 +6,16 @@
   <title>InHomease - Shop</title>
   <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
   <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XCCL1STNK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8XCCL1STNK');
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -154,165 +164,22 @@
       margin-top: 60px;
     }
   </style>
-</head>
-<body>
-  <header>
-    <div style="display: flex; align-items: center;">
-      <img src="logo.png" alt="InHomease Logo" class="logo" />
-      <h1 style="margin: 0; font-size: 1.5rem; color: #2d5330;">InHomease</h1>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#" class="snipcart-checkout">🛒 Cart</a>
-    </nav>
-  </header>
 
-  <main>
-    <h2 style="text-align:center; color:#2d5330;">Shop Our Collection</h2>
-    <div class="category-menu">
-      <button class="active" onclick="filterProducts('all')">All</button>
-      <button onclick="filterProducts('frames')">Frames</button>
-      <button onclick="filterProducts('plants')">Plants</button>
-      <button onclick="filterProducts('candles')">Candles</button>
-      <button onclick="filterProducts('lamps')">Lamps</button>
-      <button onclick="filterProducts('trays')">Trays</button>
-    </div>
-    <div class="product-grid" id="productGrid"></div>
-
-    <div class="policy-links">
-      <a href="#shipping">Shipping Policy</a>
-      <a href="#returns">Return Policy</a>
-      <a href="#terms">Terms & Conditions</a>
-      <a href="#faqs">FAQs</a>
-    </div>
-
-    <div class="policy-section" id="shipping">
-      <h3>Shipping Policy</h3>
-      <p>We offer standard shipping across the USA. Orders are processed within 1-3 business days. Delivery typically takes 7-15 days depending on location. You will receive a tracking link once your order is dispatched.</p>
-    </div>
-
-    <div class="policy-section" id="returns">
-      <h3>Return Policy</h3>
-      <p>If you are not satisfied with your purchase, you may return the item within 14 days of delivery. Items must be unused and in original packaging. Please contact support@inhomease.com to initiate a return.</p>
-    </div>
-
-    <div class="policy-section" id="terms">
-      <h3>Terms & Conditions</h3>
-      <p>By placing an order, you agree to our policies, including shipping timelines and return conditions. All products are for decorative use only. We reserve the right to update our policies at any time without prior notice.</p>
-    </div>
-
-    <div class="policy-section" id="faqs">
-      <h3>Frequently Asked Questions</h3>
-      <p><strong>Q: Where do you ship?</strong><br />A: Currently, we ship across the United States only.</p>
-      <p><strong>Q: Do you offer express shipping?</strong><br />A: Not yet, but we’re working on it!</p>
-      <p><strong>Q: Can I cancel or change my order?</strong><br />A: Please email us within 12 hours of placing your order to request any changes.</p>
-    </div>
-  </main>
-
-  <footer>
-    <p>Subscribe to our newsletter & stay updated. Questions? Contact us at <a href="mailto:inhomease@gmail.com">inhomease@gmail.com</a></p>
-  </footer>
-
-  <div hidden id="snipcart" data-api-key="NzgyOTUzYTItOWU2My00ZDAxLTkyYmYtZTRmY2I4NTJhNTk1NjM4ODgwMzI0ODY3MTIxOTky"></div>
-
-  <div class="product-modal" id="productModal">
-    <div class="product-modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-
+  <!-- Meta Pixel Code -->
   <script>
-    const productData = [
-      {
-        id: "frame-001",
-        name: "Calligraphy Wall Frame",
-        price: 29.99,
-        image: "https://images.unsplash.com/photo-1595433562696-eede0691a368",
-        category: "frames",
-        description: "Elegant Arabic calligraphy frame to elevate your wall."
-      },
-      {
-        id: "plant-002",
-        name: "Mini Indoor Plant",
-        price: 15.99,
-        image: "https://images.unsplash.com/photo-1616627988691-a3d4aa9d23ff",
-        category: "plants",
-        description: "Lush artificial plant perfect for minimalist shelves."
-      },
-      {
-        id: "candle-003",
-        name: "Decorative Scented Candle",
-        price: 12.50,
-        image: "https://images.unsplash.com/photo-1578894380176-d9a27fcf686d",
-        category: "candles",
-        description: "Warm your space with our signature scented candle."
-      },
-      {
-        id: "lamp-004",
-        name: "Boho Table Lamp",
-        price: 45.00,
-        image: "https://images.unsplash.com/photo-1602848593672-6d45ec5df9c2",
-        category: "lamps",
-        description: "Soft-lit rattan-style lamp for cozy corners."
-      },
-      {
-        id: "tray-005",
-        name: "Gold Mirror Tray",
-        price: 24.99,
-        image: "https://images.unsplash.com/photo-1602524209948-fab3ddf5bb34",
-        category: "trays",
-        description: "Elegant decorative tray perfect for perfumes, candles or jewelry."
-      }
-    ];
-
-    const productGrid = document.getElementById('productGrid');
-
-    function renderProducts(category = 'all') {
-      productGrid.innerHTML = '';
-      productData.forEach(product => {
-        if (category === 'all' || product.category === category) {
-          const productEl = document.createElement('div');
-          productEl.classList.add('product', 'show');
-          productEl.setAttribute('data-category', product.category);
-          productEl.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" onclick="showModal('${product.name}', '${product.description}', '${product.image}')">
-            <h3>${product.name}</h3>
-            <p>$${product.price.toFixed(2)}</p>
-            <button class="snipcart-add-item"
-              data-item-id="${product.id}"
-              data-item-name="${product.name}"
-              data-item-price="${product.price}"
-              data-item-url="/shop.html"
-              data-item-description="${product.description}">
-              Add to Cart
-            </button>
-          `;
-          productGrid.appendChild(productEl);
-        }
-      });
-    }
-
-    function filterProducts(category) {
-      document.querySelectorAll('.category-menu button').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      renderProducts(category);
-    }
-
-    function showModal(name, description, image) {
-      document.getElementById('modalContent').innerHTML = `
-        <h3>${name}</h3>
-        <img src="${image}" style="width:100%;border-radius:8px;margin:15px 0;">
-        <p>${description}</p>
-      `;
-      document.getElementById('productModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('productModal').style.display = 'none';
-    }
-
-    window.onload = () => renderProducts();
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID'); // Replace with your Meta Pixel ID
+    fbq('track', 'PageView');
   </script>
-</body>
-</html>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
+</head>
