@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InHomease Shop</title>
+  <link href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9f6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 30px;
+      background: #e2f0e9;
+    }
+    header img {
+      width: 100px;
+    }
+    h1 {
+      margin: 10px 0 5px;
+      color: #2d5330;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+    .product {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product h3 {
+      margin: 15px 0 10px;
+      font-size: 1.2rem;
+      color: #2c3e50;
+    }
+    .product p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    .product .price {
+      font-size: 1.1rem;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+    .snipcart-add-item {
+      background: #2d5330;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background: #e2f0e9;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="InHomease Logo">
+    <h1>InHomease Shop</h1>
+    <p>Curated home decor delivered across the USA</p>
+  </header>
+
+  <div class="product-grid">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1587583772403-70cdb56c2868" alt="Macrame Wall Hanging">
+      <h3>Macrame Wall Hanging</h3>
+      <p>Boho-style cotton macrame — perfect for cozy living spaces.</p>
+      <p class="price">$34.99</p>
+      <button class="snipcart-add-item"
+        data-item-id="macrame001"
+        data-item-price="34.99"
+        data-item-url="/shop.html"
+        data-item-name="Macrame Wall Hanging">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1583223906021-72d967b0fc4b" alt="Minimalist Vase Set">
+      <h3>Minimalist Ceramic Vases</h3>
+      <p>Set of 3 matte ceramic vases in soft tones. Elegant and simple.</p>
+      <p class="price">$42.00</p>
+      <button class="snipcart-add-item"
+        data-item-id="vase001"
+        data-item-price="42.00"
+        data-item-url="/shop.html"
+        data-item-name="Minimalist Ceramic Vases">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1618221196122-6f29b485f730" alt="Calligraphy Wall Frame">
+      <h3>Islamic Calligraphy Frame</h3>
+      <p>Wooden frame with Arabic calligraphy print — spiritual & modern.</p>
+      <p class="price">$48.00</p>
+      <button class="snipcart-add-item"
+        data-item-id="calligraphy001"
+        data-item-price="48.00"
+        data-item-url="/shop.html"
+        data-item-name="Islamic Calligraphy Frame">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 InHomease. All rights reserved.
+  </footer>
+
+  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+  <div hidden id="snipcart" data-api-key="NzgyOTUzYTItOWU2My00ZDAxLTkyYmYtZTRmY2I4NTJhNTk1NjM4ODgwMzI0ODY3MTIxOTky"></div>
+</body>
+</html>
