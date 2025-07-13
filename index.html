@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>InHomease — Coming Soon</title>
+  <title>InHomease – Coming Soon</title>
   <style>
     body {
-      background: #f4f4f4;
-      color: #333;
-      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
+      color: #333;
     }
     h1 {
       font-size: 48px;
@@ -19,9 +19,30 @@
     p {
       font-size: 18px;
       color: #666;
+      margin-bottom: 40px;
+    }
+    input[type="email"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
     }
     footer {
-      margin-top: 50px;
+      margin-top: 60px;
       font-size: 14px;
       color: #aaa;
     }
@@ -29,7 +50,13 @@
 </head>
 <body>
   <h1>InHomease</h1>
-  <p>Something amazing is in the works.<br/>We’ll be live soon — stay tuned!</p>
+  <p>Your home, reimagined. A new experience is coming soon.</p>
+
+  <form action="https://formspree.io/f/your-form-id" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Notify Me</button>
+  </form>
+
   <footer>
     &copy; 2025 InHomease. All rights reserved.
   </footer>
