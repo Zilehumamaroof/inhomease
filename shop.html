@@ -1,138 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InHomease Shop</title>
-  <link href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InHomease - Shop</title>
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+  <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8f9f6;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fefb;
+      color: #2c3e50;
     }
     header {
-      text-align: center;
-      padding: 30px;
       background: #e2f0e9;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    header img {
-      width: 100px;
+    .logo {
+      height: 50px;
+      margin-right: 15px;
     }
-    h1 {
-      margin: 10px 0 5px;
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
       color: #2d5330;
+      font-weight: bold;
+    }
+    .cart {
+      position: relative;
+    }
+    main {
+      padding: 40px 20px;
     }
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 30px;
-      padding: 40px;
+      justify-content: center;
     }
     .product {
-      background: #fff;
-      padding: 20px;
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      width: 280px;
       text-align: center;
     }
     .product img {
       width: 100%;
-      max-height: 200px;
-      object-fit: cover;
       border-radius: 8px;
-    }
-    .product h3 {
-      margin: 15px 0 10px;
-      font-size: 1.2rem;
-      color: #2c3e50;
-    }
-    .product p {
-      font-size: 0.95rem;
       margin-bottom: 10px;
-      color: #666;
     }
-    .product .price {
-      font-size: 1.1rem;
-      margin: 5px 0;
-      font-weight: bold;
-    }
-    .snipcart-add-item {
+    .product button {
       background: #2d5330;
-      color: #fff;
-      border: none;
+      color: white;
       padding: 10px 20px;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
     footer {
-      background: #e2f0e9;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      color: #666;
-      font-size: 0.9rem;
+      padding: 40px 20px;
+      background: #d7e5dc;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="InHomease Logo">
-    <h1>InHomease Shop</h1>
-    <p>Curated home decor delivered across the USA</p>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="InHomease Logo" class="logo" />
+      <h1 style="margin: 0; font-size: 1.5rem; color: #2d5330;">InHomease</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#" class="snipcart-checkout">🛒 Cart</a>
+    </nav>
   </header>
 
-  <div class="product-grid">
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1587583772403-70cdb56c2868" alt="Macrame Wall Hanging">
-      <h3>Macrame Wall Hanging</h3>
-      <p>Boho-style cotton macrame — perfect for cozy living spaces.</p>
-      <p class="price">$34.99</p>
-      <button class="snipcart-add-item"
-        data-item-id="macrame001"
-        data-item-price="34.99"
-        data-item-url="/shop.html"
-        data-item-name="Macrame Wall Hanging">
-        Add to Cart
-      </button>
-    </div>
+  <main>
+    <h2 style="text-align:center; color:#2d5330;">Shop Our Collection</h2>
+    <div class="product-grid">
 
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1583223906021-72d967b0fc4b" alt="Minimalist Vase Set">
-      <h3>Minimalist Ceramic Vases</h3>
-      <p>Set of 3 matte ceramic vases in soft tones. Elegant and simple.</p>
-      <p class="price">$42.00</p>
-      <button class="snipcart-add-item"
-        data-item-id="vase001"
-        data-item-price="42.00"
-        data-item-url="/shop.html"
-        data-item-name="Minimalist Ceramic Vases">
-        Add to Cart
-      </button>
-    </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1595433562696-eede0691a368" alt="Calligraphy Frame">
+        <h3>Calligraphy Wall Frame</h3>
+        <p>$29.99</p>
+        <button class="snipcart-add-item"
+          data-item-id="frame-001"
+          data-item-name="Calligraphy Wall Frame"
+          data-item-price="29.99"
+          data-item-url="/shop.html"
+          data-item-description="Elegant Arabic calligraphy frame to elevate your wall.">
+          Add to Cart
+        </button>
+      </div>
 
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1618221196122-6f29b485f730" alt="Calligraphy Wall Frame">
-      <h3>Islamic Calligraphy Frame</h3>
-      <p>Wooden frame with Arabic calligraphy print — spiritual & modern.</p>
-      <p class="price">$48.00</p>
-      <button class="snipcart-add-item"
-        data-item-id="calligraphy001"
-        data-item-price="48.00"
-        data-item-url="/shop.html"
-        data-item-name="Islamic Calligraphy Frame">
-        Add to Cart
-      </button>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1616627988691-a3d4aa9d23ff" alt="Artificial Plant">
+        <h3>Mini Indoor Plant</h3>
+        <p>$15.99</p>
+        <button class="snipcart-add-item"
+          data-item-id="plant-002"
+          data-item-name="Mini Indoor Plant"
+          data-item-price="15.99"
+          data-item-url="/shop.html"
+          data-item-description="Lush artificial plant perfect for minimalist shelves.">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1578894380176-d9a27fcf686d" alt="Decor Candle">
+        <h3>Decorative Scented Candle</h3>
+        <p>$12.50</p>
+        <button class="snipcart-add-item"
+          data-item-id="decor-003"
+          data-item-name="Decorative Scented Candle"
+          data-item-price="12.50"
+          data-item-url="/shop.html"
+          data-item-description="Hand-poured candle with calming scent and decor flair.">
+          Add to Cart
+        </button>
+      </div>
+
     </div>
-  </div>
+  </main>
 
   <footer>
-    &copy; 2025 InHomease. All rights reserved.
+    <p>Questions? Contact us at <a href="mailto:inhomease@gmail.com">inhomease@gmail.com</a></p>
   </footer>
 
-  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
   <div hidden id="snipcart" data-api-key="NzgyOTUzYTItOWU2My00ZDAxLTkyYmYtZTRmY2I4NTJhNTk1NjM4ODgwMzI0ODY3MTIxOTky"></div>
 </body>
 </html>
