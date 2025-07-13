@@ -30,11 +30,26 @@
       color: #2d5330;
       font-weight: bold;
     }
-    .cart {
-      position: relative;
-    }
     main {
       padding: 40px 20px;
+    }
+    .category-menu {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .category-menu button {
+      background-color: #e2f0e9;
+      border: 1px solid #2d5330;
+      color: #2d5330;
+      margin: 0 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .category-menu button.active {
+      background-color: #2d5330;
+      color: white;
     }
     .product-grid {
       display: flex;
@@ -50,6 +65,7 @@
       width: 280px;
       text-align: center;
       position: relative;
+      cursor: pointer;
     }
     .product img {
       width: 100%;
@@ -73,6 +89,12 @@
       padding: 5px 10px;
       border-radius: 5px;
       font-size: 0.8rem;
+    }
+    .product[data-category] {
+      display: none;
+    }
+    .product.show {
+      display: block;
     }
     .policy-links {
       margin-top: 40px;
@@ -101,6 +123,30 @@
       line-height: 1.6;
       color: #333;
     }
+    .product-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .product-modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+    }
+    .close-modal {
+      float: right;
+      cursor: pointer;
+      font-size: 20px;
+    }
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -123,75 +169,15 @@
 
   <main>
     <h2 style="text-align:center; color:#2d5330;">Shop Our Collection</h2>
-    <div class="product-grid">
-      <div class="product">
-        <div class="badge">Hot</div>
-        <img src="https://images.unsplash.com/photo-1595433562696-eede0691a368" alt="Calligraphy Frame">
-        <h3>Calligraphy Wall Frame</h3>
-        <p>$29.99</p>
-        <button class="snipcart-add-item"
-          data-item-id="frame-001"
-          data-item-name="Calligraphy Wall Frame"
-          data-item-price="29.99"
-          data-item-url="/shop.html"
-          data-item-description="Elegant Arabic calligraphy frame to elevate your wall.">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1616627988691-a3d4aa9d23ff" alt="Artificial Plant">
-        <h3>Mini Indoor Plant</h3>
-        <p><del style="color: gray;">$18.99</del> $15.99</p>
-        <button class="snipcart-add-item"
-          data-item-id="plant-002"
-          data-item-name="Mini Indoor Plant"
-          data-item-price="15.99"
-          data-item-url="/shop.html"
-          data-item-description="Lush artificial plant perfect for minimalist shelves.">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="product">
-        <div class="badge">Coming Soon</div>
-        <img src="https://images.unsplash.com/photo-1578894380176-d9a27fcf686d" alt="Decor Candle">
-        <h3>Decorative Scented Candle</h3>
-        <p>$12.50</p>
-        <button disabled style="background: gray; cursor: not-allowed;">
-          Out of Stock
-        </button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1602848593672-6d45ec5df9c2" alt="Boho Table Lamp">
-        <h3>Boho Table Lamp</h3>
-        <p>$45.00</p>
-        <button class="snipcart-add-item"
-          data-item-id="lamp-004"
-          data-item-name="Boho Table Lamp"
-          data-item-price="45.00"
-          data-item-url="/shop.html"
-          data-item-description="Soft-lit rattan-style lamp for cozy corners.">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1602524209948-fab3ddf5bb34" alt="Gold Mirror Tray">
-        <h3>Gold Mirror Tray</h3>
-        <p>$24.99</p>
-        <button class="snipcart-add-item"
-          data-item-id="tray-005"
-          data-item-name="Gold Mirror Tray"
-          data-item-price="24.99"
-          data-item-url="/shop.html"
-          data-item-description="Elegant decorative tray perfect for perfumes, candles or jewelry.">
-          Add to Cart
-        </button>
-      </div>
-
+    <div class="category-menu">
+      <button class="active" onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('frames')">Frames</button>
+      <button onclick="filterProducts('plants')">Plants</button>
+      <button onclick="filterProducts('candles')">Candles</button>
+      <button onclick="filterProducts('lamps')">Lamps</button>
+      <button onclick="filterProducts('trays')">Trays</button>
     </div>
+    <div class="product-grid" id="productGrid"></div>
 
     <div class="policy-links">
       <a href="#shipping">Shipping Policy</a>
@@ -221,13 +207,112 @@
       <p><strong>Q: Do you offer express shipping?</strong><br />A: Not yet, but we’re working on it!</p>
       <p><strong>Q: Can I cancel or change my order?</strong><br />A: Please email us within 12 hours of placing your order to request any changes.</p>
     </div>
-
   </main>
 
   <footer>
-    <p>Questions? Contact us at <a href="mailto:inhomease@gmail.com">inhomease@gmail.com</a></p>
+    <p>Subscribe to our newsletter & stay updated. Questions? Contact us at <a href="mailto:inhomease@gmail.com">inhomease@gmail.com</a></p>
   </footer>
 
   <div hidden id="snipcart" data-api-key="NzgyOTUzYTItOWU2My00ZDAxLTkyYmYtZTRmY2I4NTJhNTk1NjM4ODgwMzI0ODY3MTIxOTky"></div>
+
+  <div class="product-modal" id="productModal">
+    <div class="product-modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const productData = [
+      {
+        id: "frame-001",
+        name: "Calligraphy Wall Frame",
+        price: 29.99,
+        image: "https://images.unsplash.com/photo-1595433562696-eede0691a368",
+        category: "frames",
+        description: "Elegant Arabic calligraphy frame to elevate your wall."
+      },
+      {
+        id: "plant-002",
+        name: "Mini Indoor Plant",
+        price: 15.99,
+        image: "https://images.unsplash.com/photo-1616627988691-a3d4aa9d23ff",
+        category: "plants",
+        description: "Lush artificial plant perfect for minimalist shelves."
+      },
+      {
+        id: "candle-003",
+        name: "Decorative Scented Candle",
+        price: 12.50,
+        image: "https://images.unsplash.com/photo-1578894380176-d9a27fcf686d",
+        category: "candles",
+        description: "Warm your space with our signature scented candle."
+      },
+      {
+        id: "lamp-004",
+        name: "Boho Table Lamp",
+        price: 45.00,
+        image: "https://images.unsplash.com/photo-1602848593672-6d45ec5df9c2",
+        category: "lamps",
+        description: "Soft-lit rattan-style lamp for cozy corners."
+      },
+      {
+        id: "tray-005",
+        name: "Gold Mirror Tray",
+        price: 24.99,
+        image: "https://images.unsplash.com/photo-1602524209948-fab3ddf5bb34",
+        category: "trays",
+        description: "Elegant decorative tray perfect for perfumes, candles or jewelry."
+      }
+    ];
+
+    const productGrid = document.getElementById('productGrid');
+
+    function renderProducts(category = 'all') {
+      productGrid.innerHTML = '';
+      productData.forEach(product => {
+        if (category === 'all' || product.category === category) {
+          const productEl = document.createElement('div');
+          productEl.classList.add('product', 'show');
+          productEl.setAttribute('data-category', product.category);
+          productEl.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" onclick="showModal('${product.name}', '${product.description}', '${product.image}')">
+            <h3>${product.name}</h3>
+            <p>$${product.price.toFixed(2)}</p>
+            <button class="snipcart-add-item"
+              data-item-id="${product.id}"
+              data-item-name="${product.name}"
+              data-item-price="${product.price}"
+              data-item-url="/shop.html"
+              data-item-description="${product.description}">
+              Add to Cart
+            </button>
+          `;
+          productGrid.appendChild(productEl);
+        }
+      });
+    }
+
+    function filterProducts(category) {
+      document.querySelectorAll('.category-menu button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderProducts(category);
+    }
+
+    function showModal(name, description, image) {
+      document.getElementById('modalContent').innerHTML = `
+        <h3>${name}</h3>
+        <img src="${image}" style="width:100%;border-radius:8px;margin:15px 0;">
+        <p>${description}</p>
+      `;
+      document.getElementById('productModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').style.display = 'none';
+    }
+
+    window.onload = () => renderProducts();
+  </script>
 </body>
 </html>
